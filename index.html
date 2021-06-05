@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- fontawesome link -->
+    <script src="https://kit.fontawesome.com/0fb8e5a88e.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/style.css">
+    <title>jquery</title>
+  </head>
+  <body>
+      <div class="container">
+         <div class="all-contants">
+             <input type="text" placeholder="Add a New task" class="textA">
+
+           <!-- pending task -->
+           <div class="notcompl">
+              <h3>pending task</h3>
+              
+           </div>
+
+          
+           <!-- completed task -->
+           <div class="compl">
+              <h3>completed task</h3>
+              
+            </div>
+          </div>
+      </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+   <!-- jquery code -->
+
+  <script>
+     $(document).ready(function(){
+       $('.textA').on('keyup',function(e){
+        //  alert('someone press');
+
+       if(e.keyCode == 13 && $('.textA').val() !=''){
+        
+       
+        // task
+
+       var task = $('<div class="task"></div>').text($('.textA').val()); 
+     
+      //  deleted icon
+      var del = $('<i class="fas fa-trash"></i>').click(function(){
+
+        var tr = $(this).parent();
+        tr.fadeOut(function(){
+          tr.remove();
+        });
+        
+
+      });
+
+      // check icon
+       var check = $('<i class="fas fa-check"></i>').click(function(){
+        
+          var tr = $(this).parent();
+          
+           tr.fadeOut(function(){
+            $('.compl').append(tr);
+            tr.fadeIn();
+              });
+
+            $(this).remove();
+
+
+      });
+  
+         task.append(del,check)
+         $('.notcompl').append(task);
+         $('.textA').val('');
+       
+
+          }
+
+         });
+
+
+        });
+  </script>
+
+
+
+  </body>
+</html>
